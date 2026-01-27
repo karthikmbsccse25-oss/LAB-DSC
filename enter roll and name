@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+
+struct student {
+    int roll;
+    char name[20];
+    float marks;
+};
+
+int main() {
+    struct student s;      
+    struct student *ptr;   
+    ptr = &s;               
+   
+    printf("Enter roll number: ");
+    if (scanf("%d", &ptr->roll) != 1) {
+        printf("Invalid input for roll number.\n");
+        return 1;
+    }
+
+  
+    printf("Enter name: ");
+    scanf("%19s", ptr->name);
+
+   
+    printf("Enter marks: ");
+    if (scanf("%f", &ptr->marks) != 1) {
+        printf("Invalid input for marks.\n");
+        return 1;
+    }
+
+   
+    printf("\n--- Student Details ---\n");
+    printf("Roll Number: %d\n", ptr->roll);
+    printf("Name: %s\n", ptr->name);
+    printf("Marks: %.2f\n", ptr->marks);
+
+    return 0;
+}
