@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define SIZE 50
+
+
+int isPalindrome(const char str[]) {
+    int left = 0;
+    int right = strlen(str) - 1;
+
+    while (left < right) {
+        
+        if (tolower((unsigned char)str[left]) != tolower((unsigned char)str[right])) {
+            return 0; // Not a palindrome
+        }
+        left++;
+        right--;
+    }
+    return 1; // Palindrome
+}
+
+int main() {
+    char str1[SIZE], str2[SIZE];
+
+    printf("Enter a string (max %d characters): ", SIZE - 1);
+
+    
+    if (fgets(str1, sizeof(str1), stdin) == NULL) {
+        printf("Error reading input.\n");
+        return 1;
+    }
+
+
+    str1[strcspn(str1, "\n")] = '\0';
+
+   
+    strcpy(str2, str1);
+
+   
+    if (isPalindrome(str1)) {
+        printf("\"%s\" is a palindrome.\n", str2);
+    } else {
+        printf("\"%s\" is NOT a palindrome.\n", str2);
+    }
+
+    return 0;
+}
